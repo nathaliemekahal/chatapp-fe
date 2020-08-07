@@ -3,7 +3,7 @@ import { Col, Row, Nav } from "react-bootstrap";
 
 let navData = [
   {
-    name: "link",
+    name: "contacts",
   },
   {
     name: "link",

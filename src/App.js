@@ -5,12 +5,14 @@ import "./App.css";
 
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
+import ChatPage from "./components/ChatPage";
 
 function App() {
   return (
     <div className="App">
       <NavBar />
       {/* <HomePage /> */}
+      <ChatPage />
     </div>
   );
 }
