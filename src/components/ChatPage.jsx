@@ -6,6 +6,19 @@ import { FormControl } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 
 class ChatPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      users: [],
+      username: "",
+    };
+  }
+  componentDidMount = async () => {
+    let response = await fetch("http://localhost:3007/users");
+    let users = await response.json();
+    this.setState({ users });
+  };
   render() {
     return (
       <Container>
@@ -39,15 +52,15 @@ class ChatPage extends Component {
           </div>
         </Row>
         <Row md={2} className="justify-content-between mt-4">
-          <Col
-            className="users"
-            md={4}
-            style={{ width: "80px", height: "80px" }}
-          ></Col>
-          <Col
-            md={7}
-            style={{ backgroundColor: "yellow", width: "80px", height: "80px" }}
-          ></Col>
+          <Col className="users" md={4}>
+            <div className="userli-wrapper">
+              {this.state.users &&
+                this.state.users.map((user) => (
+                  <div className="userli">{user.name}</div>
+                ))}
+            </div>
+          </Col>
+          <Col md={7}></Col>
         </Row>
       </Container>
     );
