@@ -56,7 +56,14 @@ class ChatPage extends Component {
             <div className="userli-wrapper">
               {this.state.users &&
                 this.state.users.map((user) => (
-                  <div className="userli">{user.name}</div>
+                  <div className="userli mb-3">
+                    <img
+                      className="userprofile"
+                      src="profile.svg"
+                      width="50px"
+                    />
+                    <div className="userInfo">{user.name}</div>
+                  </div>
                 ))}
             </div>
           </Col>

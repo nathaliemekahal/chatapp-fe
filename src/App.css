@@ -84,10 +84,19 @@ body {
 }
 .userli-wrapper {
   padding-left: 0.5rem;
+  padding: 1rem;
 }
 
 .userli {
-  border-bottom: 1px gray solid;
-
   color: white;
+  display: flex;
+}
+.userInfo {
+  padding-bottom: 1.5rem;
+
+  border-bottom: 1px rgb(180, 180, 180, 0.1) solid;
+  flex-grow: 1;
+}
+.userprofile {
+  margin-right: 2rem;
 }
