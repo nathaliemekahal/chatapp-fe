@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Row } from "react-bootstrap";
 
 export class ChatPopBar extends Component {
+  updateMsg = (e) => {
+    this.props.myFunc(e.currentTarget.value);
+  };
+
   render() {
     return (
       <>
@@ -26,12 +30,34 @@ export class ChatPopBar extends Component {
             <path d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
           </svg>
 
-          <input placeholder="Enter message here" id="msg-input" />
+          <input
+            placeholder="Enter message here"
+            onChange={this.updateMsg}
+            id="msg-input"
+          />
         </div>
-        <div className="SendBtn">
+        <div className="SendBtn" onClick={this.props.sendMessage}>
           <img src="/send.svg" width="30px" />
         </div>
-        <div className="exitbtn">x</div>
+        <div className="exitbtn">
+          <svg
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            class="bi bi-x"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"
+            />
+          </svg>
+        </div>
       </>
     );
   }

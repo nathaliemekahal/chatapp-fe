@@ -50,6 +50,9 @@ class ChatPage extends Component {
     });
     this.setState({ msg: "" });
   };
+  receiveMsg = (msg) => {
+    this.setState({ msg });
+  };
 
   render() {
     return (
@@ -105,7 +108,11 @@ class ChatPage extends Component {
             </div>
           </Col>
           <Col md={7} className="ChatPop-wrapper-col">
-            <ChatPop />
+            <ChatPop
+              myFunc={this.receiveMsg}
+              sendMessage={this.sendMessage}
+              msgs={this.state.msgs}
+            />
           </Col>
         </Row>
       </Container>

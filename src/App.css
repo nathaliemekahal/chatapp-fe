@@ -171,3 +171,9 @@ body {
   border: none;
   margin-left: 1rems;
 }
+
+.msgs-container {
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
