@@ -60,7 +60,7 @@ class ChatPage extends Component {
                   <div className="userli mb-3">
                     <img
                       className="userprofile"
-                      src="profile.svg"
+                      src="/profile.svg"
                       width="50px"
                     />
                     <div className="userInfo">{user.name}</div>

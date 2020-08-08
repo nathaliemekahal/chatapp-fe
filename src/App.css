@@ -70,7 +70,7 @@ body {
 
 .homepage-class {
   background-color: #3f3653;
-  height: 35rem;
+  padding-bottom: 1rem;
   border-radius: 30px;
   margin-top: 2rem;
 }
@@ -169,5 +169,5 @@ body {
 #username {
   background-color: #5c4f82;
   border: none;
-  margin-left: 1rem;
+  margin-left: 1rems;
 }

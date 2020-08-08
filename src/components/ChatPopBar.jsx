@@ -29,7 +29,7 @@ export class ChatPopBar extends Component {
           <input placeholder="Enter message here" id="msg-input" />
         </div>
         <div className="SendBtn">
-          <img src="send.svg" width="30px" />
+          <img src="/send.svg" width="30px" />
         </div>
         <div className="exitbtn">x</div>
       </>

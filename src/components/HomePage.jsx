@@ -2,8 +2,25 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { withRouter } from "react-router-dom";
 
 export class HomePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      username: "",
+    };
+  }
+  catchChange = (e) => {
+    let username = e.currentTarget.value;
+    this.setState({ username });
+  };
+
+  Login = () => {
+    this.props.history.push("/chat/" + this.state.username);
+  };
   render() {
     return (
       <Container>
@@ -52,7 +69,11 @@ export class HomePage extends Component {
                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
                   />
                 </svg>
-                <input id="username" placeholder="Enter Username" />
+                <input
+                  id="username"
+                  onChange={this.catchChange}
+                  placeholder="Enter Username"
+                />
               </div>
               <div className="input-homepage mt-5">
                 <svg
@@ -69,8 +90,15 @@ export class HomePage extends Component {
                     d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"
                   />
                 </svg>
+                <input id="username" placeholder="Enter Name" />
+              </div>
+              <div className="input-homepage mt-5">
                 <input id="username" placeholder="Enter Password" />
               </div>
+            </Row>
+            <Row ClassName="d-flex justify-content-center">
+              {" "}
+              <Button onClick={() => this.Login()}>Login</Button>
             </Row>
           </Col>
         </Row>
@@ -79,4 +107,4 @@ export class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);
