@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import { FormControl } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
+import ChatPop from "../components/ChatPop";
 
 class ChatPage extends Component {
   constructor(props) {
@@ -67,7 +68,9 @@ class ChatPage extends Component {
                 ))}
             </div>
           </Col>
-          <Col md={7}></Col>
+          <Col md={7} className="ChatPop-wrapper-col">
+            <ChatPop />
+          </Col>
         </Row>
       </Container>
     );

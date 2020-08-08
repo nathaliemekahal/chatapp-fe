@@ -100,3 +100,48 @@ body {
 .userprofile {
   margin-right: 2rem;
 }
+.ChatPop-wrapper-col {
+  background-color: #5c4f82;
+  height: 300px;
+  width: 100%;
+  border-radius: 25px;
+}
+.ChatPop-Main {
+  /* position: relative; */
+}
+
+.ChatPopBar-wrapper-row {
+  background-color: white;
+  width: 100px;
+  height: 75px;
+  position: absolute;
+  bottom: 25px;
+  width: 72%;
+  padding: 16px;
+  left: 36px;
+  border-radius: 51px;
+  display: flex;
+  align-items: center;
+}
+.SendBtn {
+  width: 75px;
+  height: 75px;
+  background-color: #3cc6b7;
+  border-radius: 50%;
+  bottom: 25px;
+  position: absolute;
+  right: 36px;
+  display: flex;
+  justify-content: center;
+}
+#msg-input {
+  border: none;
+  width: 100%;
+  height: 100%;
+  margin-left: 0.8rem;
+}
+
+.happyface {
+  font-size: 30px;
+  color: #c6c1cf;
+}
