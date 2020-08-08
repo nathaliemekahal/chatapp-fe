@@ -10,16 +10,30 @@ export class HomePage extends Component {
     super(props);
 
     this.state = {
-      username: "",
+      userInfo: {
+        username: "",
+        name: "",
+      },
     };
   }
   catchChange = (e) => {
-    let username = e.currentTarget.value;
-    this.setState({ username });
+    let userInfo = this.state.userInfo;
+    let id = e.currentTarget.id;
+    userInfo[id] = e.currentTarget.value;
+    this.setState({ userInfo });
   };
 
-  Login = () => {
-    this.props.history.push("/chat/" + this.state.username);
+  Login = async () => {
+    let addUser = await fetch("http://localhost:3007/users", {
+      method: "POST",
+      body: JSON.stringify(this.state.userInfo),
+      headers: new Headers({
+        "Content-type": "application/json",
+      }),
+    });
+    if (addUser.ok) {
+      this.props.history.push("/chat/" + this.state.userInfo.username);
+    }
   };
   render() {
     return (
@@ -90,7 +104,11 @@ export class HomePage extends Component {
                     d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"
                   />
                 </svg>
-                <input id="username" placeholder="Enter Name" />
+                <input
+                  id="name"
+                  onChange={this.catchChange}
+                  placeholder="Enter Name"
+                />
               </div>
               <div className="input-homepage mt-5">
                 <input id="username" placeholder="Enter Password" />

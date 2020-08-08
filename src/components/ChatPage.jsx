@@ -5,6 +5,8 @@ import Col from "react-bootstrap/Col";
 import { FormControl } from "react-bootstrap";
 import { FiSearch } from "react-icons/fi";
 import ChatPop from "../components/ChatPop";
+import io from "socket.io-client";
+import uniqid from "uniqid";
 
 class ChatPage extends Component {
   constructor(props) {
@@ -12,14 +14,43 @@ class ChatPage extends Component {
 
     this.state = {
       users: [],
-      username: "",
+      username: this.props.match.params.Username,
+      msg: "",
+      msgs: [],
     };
   }
   componentDidMount = async () => {
     let response = await fetch("http://localhost:3007/users");
     let users = await response.json();
-    this.setState({ users });
+    let filteredUsers = users.filter(
+      (user) => user.username !== this.state.username
+    );
+    this.setState({ users: filteredUsers });
+    const connOpt = {
+      transports: ["websocket"],
+    };
+    this.socket = io("http://localhost:3007", connOpt);
+    this.socket.on("message", (msg) => {
+      this.setState({ msgs: this.state.msgs.concat(msg) });
+    });
   };
+  // Join room
+
+  joinRoom = (opponent) => {
+    let id = uniqid();
+    this.socket.emit("joinRoom", {
+      username: this.state.username,
+      roomid: id,
+      opponent,
+    });
+  };
+  sendMessage = () => {
+    this.socket.emit("chatmessage", {
+      text: this.state.msg,
+    });
+    this.setState({ msg: "" });
+  };
+
   render() {
     return (
       <Container>
@@ -63,7 +94,12 @@ class ChatPage extends Component {
                       src="/profile.svg"
                       width="50px"
                     />
-                    <div className="userInfo">{user.name}</div>
+                    <div
+                      className="userInfo"
+                      onClick={() => this.joinRoom(user.username)}
+                    >
+                      {user.name}
+                    </div>
                   </div>
                 ))}
             </div>
