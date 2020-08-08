@@ -31,6 +31,7 @@ export class ChatPopBar extends Component {
         <div className="SendBtn">
           <img src="send.svg" width="30px" />
         </div>
+        <div className="exitbtn">x</div>
       </>
     );
   }

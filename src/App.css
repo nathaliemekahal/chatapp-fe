@@ -72,6 +72,7 @@ body {
   background-color: #3f3653;
   height: 35rem;
   border-radius: 30px;
+  margin-top: 2rem;
 }
 
 .addUser-class {
@@ -144,4 +145,29 @@ body {
 .happyface {
   font-size: 30px;
   color: #c6c1cf;
+}
+.exitbtn {
+  position: absolute;
+  color: white;
+  top: 13px;
+  right: 67px;
+  color: 33px;
+  font-size: 26px;
+}
+.input-homepage {
+  color: #c6c1cf;
+  background-color: #5c4f82;
+  width: 80%;
+  height: 75px;
+
+  padding: 16px;
+
+  border-radius: 51px;
+  display: flex;
+  align-items: center;
+}
+#username {
+  background-color: #5c4f82;
+  border: none;
+  margin-left: 1rem;
 }

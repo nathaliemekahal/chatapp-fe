@@ -6,13 +6,15 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import ChatPage from "./components/ChatPage";
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <NavBar />
-      {/* <HomePage /> */}
-      <ChatPage />
+      <Router>
+        <Route path="/Chat" component={NavBar} />
+        <Route path="/LoginPage" exact component={HomePage} />
+        <Route path="/Chat" component={ChatPage} />
+      </Router>
     </div>
   );
 }
