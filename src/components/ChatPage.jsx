@@ -70,20 +70,14 @@ class ChatPage extends Component {
               />
             </div>
           </Col>
-          <div className="d-flex justify-content-end">
-            <Col
-              md={4}
-              style={{ backgroundColor: "pink", width: "80px", height: "80px" }}
-            ></Col>
-            <Col
-              md={4}
-              className="ml-3"
-              style={{
-                backgroundColor: "white",
-                width: "80px",
-                height: "80px",
-              }}
-            ></Col>
+          <div className="d-flex justify-content-end align-items-center">
+            <Col md={6} className="clearchat-btn">
+              CLEAR CHAT
+            </Col>
+            <Col md={5} className="ml-3 more-btn">
+              {" "}
+              MORE
+            </Col>
           </div>
         </Row>
         <Row md={2} className="justify-content-between mt-4">
