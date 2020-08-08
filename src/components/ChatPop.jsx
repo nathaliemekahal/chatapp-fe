@@ -15,7 +15,9 @@ class ChatPop extends Component {
         <div className="msgs-container">
           {this.props.msgs &&
             this.props.msgs.map((msg, index) => (
-              <div key={index}>{msg.text}</div>
+              <div key={index} className="msg-bubble">
+                {msg.text}
+              </div>
             ))}
         </div>
         <ChatPopBar
