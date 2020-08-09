@@ -1,6 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 /*TOP NAV*/
+body {
+  font-family: "Varela Round", sans-serif;
+}
 .top-navbar-class {
   background-color: #4d426d;
+  font-family: "Varela Round", sans-serif;
 }
 .nav-link {
   color: white;
@@ -82,10 +87,16 @@ body {
 .users {
   background-color: #5c4f82;
   border-radius: 35px;
+  height: 400px;
 }
 .userli-wrapper {
   padding-left: 0.5rem;
-  padding: 1rem;
+  margin: 2rem;
+  margin-top: 2rem;
+  margin-top: 3rem;
+  overflow: auto;
+  scrollbar-width: none;
+  height: 300px;
 }
 .addUser-icon {
   margin-top: 2rem;
@@ -176,6 +187,8 @@ body {
   background-color: #5c4f82;
   border: none;
   margin-left: 1rem;
+  color: white;
+  outline-style: none;
 }
 #name::placeholder,
 #password::placeholder,
