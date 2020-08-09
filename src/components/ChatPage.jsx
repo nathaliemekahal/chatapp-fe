@@ -17,6 +17,7 @@ class ChatPage extends Component {
       username: this.props.match.params.Username,
       msg: "",
       msgs: [],
+      joined: false,
     };
   }
   componentDidMount = async () => {
@@ -37,6 +38,7 @@ class ChatPage extends Component {
   // Join room
 
   joinRoom = (opponent) => {
+    this.setState({ joined: true });
     let id = uniqid();
     this.socket.emit("joinRoom", {
       username: this.state.username,
@@ -52,6 +54,9 @@ class ChatPage extends Component {
   };
   receiveMsg = (msg) => {
     this.setState({ msg });
+  };
+  closeChat = () => {
+    this.setState({ joined: false });
   };
 
   render() {
@@ -101,13 +106,16 @@ class ChatPage extends Component {
                 ))}
             </div>
           </Col>
-          <Col md={7} className="ChatPop-wrapper-col">
-            <ChatPop
-              myFunc={this.receiveMsg}
-              sendMessage={this.sendMessage}
-              msgs={this.state.msgs}
-            />
-          </Col>
+          {this.state.joined && (
+            <Col md={7} className="ChatPop-wrapper-col">
+              <ChatPop
+                closeChat={this.closeChat}
+                myFunc={this.receiveMsg}
+                sendMessage={this.sendMessage}
+                msgs={this.state.msgs}
+              />
+            </Col>
+          )}
         </Row>
       </Container>
     );

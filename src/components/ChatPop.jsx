@@ -21,6 +21,7 @@ class ChatPop extends Component {
             ))}
         </div>
         <ChatPopBar
+          closeChat={this.props.closeChat}
           myFunc={this.props.myFunc}
           sendMessage={this.props.sendMessage}
         />

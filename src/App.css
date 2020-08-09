@@ -97,6 +97,7 @@ body {
   overflow: auto;
   scrollbar-width: none;
   height: 300px;
+  cursor: pointer;
 }
 .addUser-icon {
   margin-top: 2rem;

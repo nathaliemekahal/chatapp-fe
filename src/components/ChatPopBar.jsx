@@ -39,7 +39,7 @@ export class ChatPopBar extends Component {
         <div className="SendBtn" onClick={this.props.sendMessage}>
           <img src="/send.svg" width="30px" />
         </div>
-        <div className="exitbtn">
+        <div className="exitbtn" onClick={this.props.closeChat}>
           <svg
             width="1em"
             height="1em"
