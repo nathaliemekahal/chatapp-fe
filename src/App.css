@@ -116,11 +116,12 @@ body {
 .userprofile {
   margin-right: 2rem;
 }
-.ChatPop-wrapper-col {
+.chatpop-wrapper-col: {
   background-color: #5c4f82;
   height: 400px;
   width: 100%;
   border-radius: 25px;
+  transition: all 2s ease;
 }
 .ChatPop-Main {
   /* position: relative; */
@@ -155,6 +156,7 @@ body {
   width: 100%;
   height: 100%;
   margin-left: 0.8rem;
+  outline: none;
 }
 
 .happyface {
