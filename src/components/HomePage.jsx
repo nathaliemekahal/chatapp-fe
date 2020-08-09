@@ -43,29 +43,7 @@ export class HomePage extends Component {
             <Row className="addUser-class">
               <div className="addUser-icon">
                 {" "}
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  class="bi bi-person-plus-fill"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  style={{
-                    fontSize: "24rem",
-                    opacity: "0.8",
-                    color: "#DC653B ",
-                    fontSize: "12rem ",
-                  }}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
-                  />
-                  <path
-                    fill-rule="evenodd"
-                    d="M13 7.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"
-                  />
-                </svg>
+                <img src="interaction.svg" width="150px" />
               </div>
             </Row>
             <Row className="justify-content-center mt-5">
@@ -94,6 +72,26 @@ export class HomePage extends Component {
                   width="1em"
                   height="1em"
                   viewBox="0 0 16 16"
+                  class="bi bi-person-check-fill"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm9.854-2.854a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+                  />
+                </svg>
+                <input
+                  id="name"
+                  onChange={this.catchChange}
+                  placeholder="Enter Name"
+                />
+              </div>
+              <div className="input-homepage mt-5">
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
                   class="bi bi-lock-fill"
                   fill="currentColor"
                   xmlns="http://www.w3.org/2000/svg"
@@ -104,19 +102,14 @@ export class HomePage extends Component {
                     d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"
                   />
                 </svg>
-                <input
-                  id="name"
-                  onChange={this.catchChange}
-                  placeholder="Enter Name"
-                />
-              </div>
-              <div className="input-homepage mt-5">
-                <input id="username" placeholder="Enter Password" />
+                <input id="password" placeholder="Enter Password" />
               </div>
             </Row>
-            <Row ClassName="d-flex justify-content-center">
+            <Row className="d-flex justify-content-center">
               {" "}
-              <Button onClick={() => this.Login()}>Login</Button>
+              <Button className="login-btn" onClick={() => this.Login()}>
+                Login
+              </Button>
             </Row>
           </Col>
         </Row>

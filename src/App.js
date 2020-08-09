@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route path="/" component={NavBar} />
-        <Route path="/LoginPage" exact component={HomePage} />
+        <Route path="/Chat/" component={NavBar} />
+        <Route path="/" exact component={HomePage} />
         <Route path="/Chat/:Username" exact component={ChatPage} />
       </Router>
     </div>
