@@ -116,12 +116,11 @@ body {
 .userprofile {
   margin-right: 2rem;
 }
-.chatpop-wrapper-col: {
+.ChatPop-wrapper-col {
   background-color: #5c4f82;
   height: 400px;
   width: 100%;
   border-radius: 25px;
-  transition: all 2s ease;
 }
 .ChatPop-Main {
   /* position: relative; */
