@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Container } from "react-bootstrap";
 import ChatPopBar from "../components/ChatPopBar";
+import { animateScroll } from "react-scroll";
 
 class ChatPop extends Component {
   constructor(props) {
@@ -8,11 +9,23 @@ class ChatPop extends Component {
 
     this.state = {};
   }
+  componentDidMount = () => {
+    this.scrollToBottom();
+  };
 
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+  scrollToBottom() {
+    animateScroll.scrollToBottom({
+      duration: 500,
+      containerId: "ContainerElementID",
+    });
+  }
   render() {
     return (
       <Row className="ChatPop-Main">
-        <div className="msgs-container">
+        <div className="msgs-container" id="ContainerElementID">
           {this.props.msgs &&
             this.props.msgs.map((msg, index) => (
               <>
