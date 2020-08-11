@@ -260,3 +260,14 @@ body {
   background-color: #7f749d;
   border: 1.5px white solid;
 }
+
+.msg-bubble-sender {
+  background-color: #efa985;
+  padding: 30px 29px;
+  color: white;
+  margin-top: 1rem;
+  border-radius: 15px;
+  max-width: 350px;
+  overflow-wrap: anywhere;
+  margin-left: 214px;
+}
