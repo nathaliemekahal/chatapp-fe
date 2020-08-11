@@ -210,11 +210,12 @@ body {
 
 .msg-bubble {
   background-color: #4d426d;
-  padding: 3px 54px 10px 18px;
+  padding: 30px 29px;
   color: white;
   margin-top: 1rem;
   border-radius: 15px;
-  max-width: 300px;
+  max-width: 350px;
+  overflow-wrap: anywhere;
 }
 .clearchat-btn {
   background-color: #4d426d;

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Row } from "react-bootstrap";
 
 export class ChatPopBar extends Component {
+  emptyInput = () => {
+    let msginput = document.querySelector("#msg-input");
+    msginput.value = "";
+  };
   updateMsg = (e) => {
     this.props.myFunc(e.currentTarget.value);
   };
@@ -36,7 +40,13 @@ export class ChatPopBar extends Component {
             id="msg-input"
           />
         </div>
-        <div className="SendBtn" onClick={this.props.sendMessage}>
+        <div
+          className="SendBtn"
+          onClick={() => {
+            this.props.sendMessage();
+            this.emptyInput();
+          }}
+        >
           <img src="/send.svg" width="30px" />
         </div>
         <div className="exitbtn" onClick={this.props.closeChat}>

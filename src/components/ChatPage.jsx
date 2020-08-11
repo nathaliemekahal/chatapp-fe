@@ -18,7 +18,6 @@ class ChatPage extends Component {
       msg: "",
       msgs: [],
       joined: false,
-      opponent: "",
     };
   }
   componentDidMount = async () => {
@@ -39,7 +38,7 @@ class ChatPage extends Component {
   // Join room
 
   joinRoom = (opponent) => {
-    this.setState({ joined: true, opponent });
+    this.setState({ joined: true });
     let id = uniqid();
     this.socket.emit("joinRoom", {
       username: this.state.username,
@@ -49,9 +48,7 @@ class ChatPage extends Component {
   };
   sendMessage = () => {
     this.socket.emit("chatmessage", {
-      from: this.state.username,
       text: this.state.msg,
-      to: this.state.opponent,
     });
     this.setState({ msg: "" });
   };
@@ -59,10 +56,7 @@ class ChatPage extends Component {
     this.setState({ msg });
   };
   closeChat = () => {
-    this.socket.emit("leaveRoom", {
-      username: this.state.username,
-    });
-    this.setState({ joined: false, msgs: [] });
+    this.setState({ joined: false });
   };
 
   render() {
