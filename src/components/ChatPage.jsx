@@ -19,6 +19,7 @@ class ChatPage extends Component {
       msgs: [],
       joined: false,
       opponent: "",
+      id: "",
     };
   }
   componentDidMount = async () => {
@@ -34,6 +35,11 @@ class ChatPage extends Component {
     this.socket = io("http://localhost:3007", connOpt);
     this.socket.on("message", (msg) => {
       this.setState({ msgs: this.state.msgs.concat(msg) });
+    });
+    this.socket.on("connect", () => {
+      this.socket.emit("info", {
+        username: this.state.username,
+      });
     });
   };
   // Join room
