@@ -121,6 +121,7 @@ class ChatPage extends Component {
           {this.state.joined && (
             <Col md={7} className="ChatPop-wrapper-col">
               <ChatPop
+                sender={this.state.opponent}
                 username={this.state.username}
                 closeChat={this.closeChat}
                 myFunc={this.receiveMsg}
