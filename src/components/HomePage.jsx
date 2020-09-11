@@ -107,7 +107,7 @@ export class HomePage extends Component {
             </Row>
             <Row className="d-flex justify-content-center">
               {" "}
-              <Button className="login-btn" onClick={() => this.Login()}>
+              <Button className="login-btn" onClick={() => this.Login}>
                 Login
               </Button>
             </Row>
