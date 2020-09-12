@@ -10,6 +10,7 @@ export class HomePage extends Component {
     super(props);
 
     this.state = {
+      mode: "register",
       userInfo: {
         username: "",
         name: "",
@@ -23,7 +24,7 @@ export class HomePage extends Component {
     this.setState({ userInfo });
   };
 
-  Login = async () => {
+  Register = async () => {
     let addUser = await fetch("http://localhost:3007/users", {
       method: "POST",
       body: JSON.stringify(this.state.userInfo),
@@ -31,9 +32,14 @@ export class HomePage extends Component {
         "Content-type": "application/json",
       }),
     });
-    if (addUser.ok) {
+    if (addUser.status === 200) {
       this.props.history.push("/chat/" + this.state.userInfo.username);
+    } else if (addUser.status === 403) {
+      this.setState({ mode: "login" });
     }
+  };
+  Login = () => {
+    this.props.history.push("/chat/" + this.state.userInfo.username);
   };
   render() {
     return (
@@ -87,7 +93,7 @@ export class HomePage extends Component {
                   placeholder="Enter Name"
                 />
               </div>
-              <div className="input-homepage mt-5">
+              {/* <div className="input-homepage mt-5">
                 <svg
                   width="1em"
                   height="1em"
@@ -103,13 +109,20 @@ export class HomePage extends Component {
                   />
                 </svg>
                 <input id="password" placeholder="Enter Password" />
-              </div>
+              </div> */}
             </Row>
             <Row className="d-flex justify-content-center">
               {" "}
-              <Button className="login-btn" onClick={() => this.Login}>
-                Login
-              </Button>
+              {this.state.mode === "register" && (
+                <Button className="login-btn" onClick={() => this.Register()}>
+                  Register
+                </Button>
+              )}
+              {this.state.mode === "login" && (
+                <Button className="login-btn" onClick={() => this.Login()}>
+                  login
+                </Button>
+              )}
             </Row>
           </Col>
         </Row>

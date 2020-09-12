@@ -25,17 +25,18 @@ class ChatPop extends Component {
   render() {
     return (
       <Row className="ChatPop-Main">
+        <h3>{this.props.receiver.username}</h3>
         <div className="msgs-container" id="ContainerElementID">
           {this.props.msgs &&
             this.props.msgs.map((msg, index) => (
               <>
-                {msg.from === this.props.username && (
+                {msg.from === this.props.sender && (
                   <div key={index} className="msg-bubble-sender">
                     {msg.text}
                   </div>
                 )}
-                {msg.from !== this.props.username &&
-                  msg.from === this.props.sender && (
+                {msg.from !== this.props.sender &&
+                  msg.from === this.props.receiver.username && (
                     <div key={index} className="msg-bubble">
                       {msg.text}
                     </div>

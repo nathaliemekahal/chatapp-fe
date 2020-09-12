@@ -18,7 +18,7 @@ class ChatPage extends Component {
       msg: "",
       msgs: [],
       joined: false,
-      opponent: "",
+      receiver: "",
       id: "",
     };
   }
@@ -37,27 +37,18 @@ class ChatPage extends Component {
       this.setState({ msgs: this.state.msgs.concat(msg) });
     });
     this.socket.on("connect", () => {
-      this.socket.emit("info", {
+      this.socket.emit("userInfo", {
         username: this.state.username,
       });
     });
   };
   // Join room
 
-  joinRoom = (opponent) => {
-    this.setState({ joined: true, opponent });
-    let id = uniqid();
-    this.socket.emit("joinRoom", {
-      username: this.state.username,
-      roomid: id,
-      opponent,
-    });
-  };
   sendMessage = () => {
-    this.socket.emit("chatmessage", {
+    this.socket.emit("chat", {
       from: this.state.username,
       text: this.state.msg,
-      to: this.state.opponent,
+      to: this.state.receiver.username,
     });
     this.setState({ msg: "" });
   };
@@ -102,27 +93,25 @@ class ChatPage extends Component {
             <div className="userli-wrapper">
               {this.state.users &&
                 this.state.users.map((user) => (
-                  <div className="userli mb-3">
+                  <div
+                    onClick={() => this.setState({ receiver: user })}
+                    className="userli mb-3"
+                  >
                     <img
                       className="userprofile"
                       src="/profile.svg"
                       width="50px"
                     />
-                    <div
-                      className="userInfo"
-                      onClick={() => this.joinRoom(user.username)}
-                    >
-                      {user.name}
-                    </div>
+                    <div className="userInfo">{user.name}</div>
                   </div>
                 ))}
             </div>
           </Col>
-          {this.state.joined && (
+          {this.state.receiver && (
             <Col md={7} className="ChatPop-wrapper-col">
               <ChatPop
-                sender={this.state.opponent}
-                username={this.state.username}
+                sender={this.state.username}
+                receiver={this.state.receiver}
                 closeChat={this.closeChat}
                 myFunc={this.receiveMsg}
                 sendMessage={this.sendMessage}
