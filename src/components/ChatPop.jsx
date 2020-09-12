@@ -30,11 +30,12 @@ class ChatPop extends Component {
           {this.props.msgs &&
             this.props.msgs.map((msg, index) => (
               <>
-                {msg.from === this.props.sender && (
-                  <div key={index} className="msg-bubble-sender">
-                    {msg.text}
-                  </div>
-                )}
+                {msg.from === this.props.sender &&
+                  msg.to === this.props.receiver.username && (
+                    <div key={index} className="msg-bubble-sender">
+                      {msg.text}
+                    </div>
+                  )}
                 {msg.from !== this.props.sender &&
                   msg.from === this.props.receiver.username && (
                     <div key={index} className="msg-bubble">
