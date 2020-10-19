@@ -41,6 +41,12 @@ class ChatPage extends Component {
     this.socket.on("message", (msg) => {
       this.setState({ msgs: this.state.msgs.concat(msg) });
     });
+    this.socket.on("refreshUsers",({users})=>{
+      let filteredUsers = users.filter(
+        (user) => user.username !== this.state.username
+      );
+      this.setState({ users: filteredUsers });
+    })
   };
   // Join room
 
