@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import NavBar from "./components/NavBar";
 import ChatPage from "./components/ChatPage";
+import SignIn from "./components/SignIn";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Route path="/Chat/" component={NavBar} />
         <Route path="/" exact component={HomePage} />
+        <Route path="/signin" exact component={SignIn} />
         <Route path="/Chat/:Username" exact component={ChatPage} />
       </Router>
     </div>
