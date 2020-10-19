@@ -33,13 +33,13 @@ class ChatPage extends Component {
       transports: ["websocket"],
     };
     this.socket = io("http://localhost:3007", connOpt);
-    this.socket.on("message", (msg) => {
-      this.setState({ msgs: this.state.msgs.concat(msg) });
-    });
     this.socket.on("connect", () => {
       this.socket.emit("info", {
         username: this.state.username,
       });
+    });
+    this.socket.on("message", (msg) => {
+      this.setState({ msgs: this.state.msgs.concat(msg) });
     });
   };
   // Join room
@@ -47,11 +47,6 @@ class ChatPage extends Component {
   joinRoom = (opponent) => {
     this.setState({ joined: true, opponent });
     let id = uniqid();
-    this.socket.emit("joinRoom", {
-      username: this.state.username,
-      roomid: id,
-      opponent,
-    });
   };
   sendMessage = () => {
     this.socket.emit("chatmessage", {

@@ -7,15 +7,36 @@ class ChatPop extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      messages: "",
+    };
   }
   componentDidMount = () => {
     this.scrollToBottom();
+    let filteredMessages = this.props.msgs.filter(
+      (msg) =>
+        (msg.from === this.props.username && msg.to === this.props.sender) ||
+        (msg.from === this.props.sender && msg.to === this.props.username)
+    );
+    this.setState({ messages: filteredMessages });
   };
 
-  componentDidUpdate() {
+  componentDidUpdate = async (prevProps) => {
     this.scrollToBottom();
-  }
+    if (
+      prevProps.msgs.length !== this.props.msgs.length ||
+      prevProps.sender !== this.props.sender
+    ) {
+      let filteredMessages = this.props.msgs.filter(
+        (msg) =>
+          (msg.from === this.props.username && msg.to === this.props.sender) ||
+          (msg.from === this.props.sender && msg.to === this.props.username)
+      );
+      console.log(filteredMessages);
+      this.setState({ messages: filteredMessages });
+    }
+  };
+
   scrollToBottom() {
     animateScroll.scrollToBottom({
       duration: 500,
@@ -26,8 +47,8 @@ class ChatPop extends Component {
     return (
       <Row className="ChatPop-Main">
         <div className="msgs-container" id="ContainerElementID">
-          {this.props.msgs &&
-            this.props.msgs.map((msg, index) => (
+          {this.state.messages &&
+            this.state.messages.map((msg, index) => (
               <>
                 {msg.from === this.props.username && (
                   <div key={index} className="msg-bubble-sender">
