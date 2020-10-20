@@ -45,8 +45,7 @@ class NavBar extends Component {
               className="nav-ul-wrapper-class"
               style={{ flexWrap: "nowrap" }}
             >
-              <Nav.Link href="#home">icon</Nav.Link>
-              <Nav.Link href="#home">smth</Nav.Link>
+              <Nav.Link href="/">Log out</Nav.Link>
             </Nav>
           </Col>
         </Row>

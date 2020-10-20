@@ -104,12 +104,12 @@ body {
 }
 
 .userli {
-  color: white;
+  color: white !important;
   display: flex;
 }
 .userInfo {
   padding-bottom: 1.5rem;
-
+  color: white !important;
   border-bottom: 1px rgb(180, 180, 180, 0.1) solid;
   flex-grow: 1;
 }

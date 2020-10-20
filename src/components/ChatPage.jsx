@@ -112,6 +112,7 @@ class ChatPage extends Component {
                     <div
                       className="userInfo"
                       onClick={() => this.joinRoom(user.username)}
+                      style={{ color: "white !important"}}
                     >
                       {user.name}
                     </div>

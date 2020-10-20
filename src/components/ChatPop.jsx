@@ -46,6 +46,7 @@ class ChatPop extends Component {
   render() {
     return (
       <Row className="ChatPop-Main">
+        <p style={{color:"white",padding:"20px",paddingLeft:"40px"}}>{this.props.sender}</p>
         <div className="msgs-container" id="ContainerElementID">
           {this.state.messages &&
             this.state.messages.map((msg, index) => (
